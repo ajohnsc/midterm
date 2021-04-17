@@ -1,0 +1,98 @@
+#!/bin/bash
+#
+# this is a base script for the Linux 101 lessons
+
+# This function will say what actions is available
+# by default the available actions are launch,clean and rate
+# but if you don't need the lesson to be rated just comment out
+# rate echo
+get_action(){
+	echo "launch"
+	echo "clean"
+	echo "rate"
+}
+
+# Score Variable
+SCORE=1
+
+# Print Success
+success_output(){
+	printf "\033[1;32mSuccess\033[0m\n"
+}
+
+# Print Error
+error_output(){
+  printf "\033[1;31mError\033[0m\n"
+}
+
+# Print Pass
+pass_output(){
+	printf "\033[1;32mPass\033[0m\n"
+}
+
+# Print Failed
+failed_output(){
+  printf "\033[1;31mFailed\033[0m\n"
+  SCORE=`expr $SCORE - 1`
+}
+
+# This function should prepare the environment for the task
+launch_script(){
+	return 0
+}
+
+# This function should cleanup the environment for next tasks
+clean_script(){
+  return 0
+}
+
+# This function should rate the work of the student
+rate_script(){
+	printf "\nOVERALL............................."
+	if [ $SCORE -eq 1 ]
+	then
+		pass_output
+	else
+		failed_output
+	fi
+  return 0
+}
+
+# This taps which method to use according to which action he chosed
+script_actions(){
+  if [ -z "$1" ]
+  then
+        echo "No action supplied!"
+  elif [ "$1" = "launch" ]
+  then
+        launch_script
+  elif [ "$1" = "clean" ]
+  then
+      	clean_script
+  elif [ "$1" = "rate "]
+  then
+				rate_script
+  fi
+
+}
+
+# Check the action argument
+check_first_argument(){
+  if [ -z "$1" ]
+  then
+		echo "No action supplied!"
+  elif [ "$1" = "action" ]
+  then
+		get_action
+  else
+		script_actions $1
+  fi
+}
+
+# Main function
+main(){
+	check_first_argument $1
+}
+
+# Execute main function
+main $1

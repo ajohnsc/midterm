@@ -1,0 +1,26 @@
+#!/bin/bash
+
+
+ANS="n"
+API_KEY="935415758:AAGc-sXokFb-zNYpHeSYvcvQDOSur3HnzUo"
+CHAT_ID="508456308"
+
+while [ "$ANS" != "y" ]
+do
+	echo -n "Full Name:"
+	read full_name
+	echo -n "username:"
+	read user_name
+	echo -n "stnumber:"
+	read st_number
+
+	echo -n "Full Name: $full_name
+User Name: $user_name
+Student Number: $st_number 
+Is this information correct ? (y/n)"
+	read ANS
+done
+
+CHAT_TEXT="$full_name with the student number of $st_number and user name $user_name is taking the midterm exam"
+
+curl -s --data "chat_id=$CHAT_ID" --data "text=$CHAT_TEXT" 'https://api.telegram.org/bot'$API_KEY'/sendMessage' >> /dev/null
