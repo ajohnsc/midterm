@@ -21,6 +21,13 @@ Is this information correct ? (y/n)"
 	read ANS
 done
 
+TASKS=`for  i in {1..100};do echo $(( ( RANDOM % 10 )  + 1 ));done | uniq | head -n 3`
+
 CHAT_TEXT="$full_name with the student number of $st_number and user name $user_name is taking the midterm exam"
+
+mkdir /tmp/instructions
+mkdir /tmp/checker
+
+for i in $TASKS;do cp /etc/instructions/$i /tmp/instructions;cp /etc/checker/$i /tmp/checker;done
 
 curl -s --data "chat_id=$CHAT_ID" --data "text=$CHAT_TEXT" 'https://api.telegram.org/bot'$API_KEY'/sendMessage' >> /dev/null
