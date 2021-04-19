@@ -1,0 +1,5 @@
+Create a script named installhtop.sh in the /home/student directory. the script should contain the following procedure:
+
+1.) install Extra repository via package manager
+2.) install htop via package manager
+3.) remove epel repository via package manager

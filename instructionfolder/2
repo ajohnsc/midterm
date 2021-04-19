@@ -1,0 +1,7 @@
+Create a script named getutil.sh in the /home/student directory. the script should contain the following procedure:
+
+1.) get ram utilization.
+2.) get disk utilization of / partition.
+3.) represent them in this format:
+RAM: 10%
+DISK: 50%

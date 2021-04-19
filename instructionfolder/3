@@ -1,0 +1,4 @@
+Create a script named makeagig.sh in the /home/student directory. the script should contain the following procedure:
+
+1.) Create a directory called makeagig.
+2.) Inside the makeagig directory the script will create a file named gigabyte that has 1GB in size.

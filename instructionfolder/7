@@ -1,0 +1,7 @@
+Create a script named argument.sh in the /home/student directory. the script should contain the following procedure:
+
+1.) It will get an 1 argument as a variable in the script.
+2.) the argument will be examined if the first argument is a number or string
+2.1.) if it is a number it should echo "it is a number".
+2.2.) if it is a string it should echo "it is a string".
+3.) and if it is a number it should identify if even or odd.

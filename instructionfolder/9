@@ -1,0 +1,6 @@
+Create a script named users.sh in the /home/student directory. the script should contain the following procedure:
+
+1.) get all users and their uid in 2 columns.
+Example:
+root 0
+aj 1001

@@ -1,0 +1,6 @@
+Create a script named lucky.sh in the /home/student directory. the script should contain the following procedure:
+
+1.) create a directory called lucky.
+2.) inside the lucky directory create a file called eight.
+3.) inside the lucky directory it should create a file named tenMB with a size of 10MB.
+4.) inside the lucky directory it should create an archive of tenMB named archive.zip

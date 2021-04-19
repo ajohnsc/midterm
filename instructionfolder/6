@@ -1,0 +1,4 @@
+Create a script named logbackup.sh in the /home/student directory. the script should contain the following procedure:
+
+1.) create a directory logbackup.
+2.) inside in logbackup create a tar, tar.gz, tar.bz archives of /var/log named logz.

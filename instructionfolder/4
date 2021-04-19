@@ -1,0 +1,5 @@
+Create a script named examinelogs.sh in the /home/student directory. the script should contain the following procedure:
+
+1.) create a directory called examinelogs.
+1.) copy /var/log/messages inside the examinelogs directory.
+2.) then filter the file to only show the errors of the file.

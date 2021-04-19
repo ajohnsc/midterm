@@ -1,0 +1,5 @@
+Create a script named groups.sh in the /home/student directory. the script should contain the following procedure:
+
+1.) get all group and display their gid and groupname in 2 columns.
+Example:
+0 root
