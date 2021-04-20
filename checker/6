@@ -35,7 +35,7 @@ test_file(){
 if [ -f "$FILE" ]; then
 	mkdir -p /tmp/$NUM
 	cd /tmp/$NUM
-	bash $FILE
+	bash $FILE &>> /dev/null
 	if [ -d "/tmp/$NUM/$FOLDER" ]; then
 		cd /tmp/$NUM/$FOLDER
 		test -e logz.tar && test -e logz.tar.gz && test -e logz.tar.bz || failed_output && pass_output

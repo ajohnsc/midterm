@@ -36,7 +36,7 @@ test_file(){
 if [ -f "$FILE" ]; then
 	mkdir -p /tmp/$NUM
 	cd /tmp/$NUM
-	bash $FILE
+	bash $FILE &>> /dev/null
 	if [ -d "/tmp/$NUM/$FOLDER" ]; then
 		cd /tmp/$NUM/$FOLDER
 		if [ -f gigabyte ];then

@@ -34,9 +34,9 @@ test_file(){
 if [ -f "$FILE" ]; then
 	mkdir -p /tmp/$NUM
 	cd /tmp/$NUM
-	bash $FILE >> /tmp/$NUM/studentouput
-	free | grep Mem | awk '{ printf("RAM:%.0f%\n", $4/$2 * 100.0) }' >> /tmp/$NUM/sourceouput
-	echo "DISK:$(df --output=pcent / | tr -dc '0-9')%" >> /tmp/$NUM/sourceouput
+	bash $FILE &>> /tmp/$NUM/studentouput
+	free | grep Mem | awk '{ printf("RAM:%.0f%\n", $4/$2 * 100.0) }' &>> /tmp/$NUM/sourceouput
+	echo "DISK:$(df --output=pcent / | tr -dc '0-9')%" &>> /tmp/$NUM/sourceouput
 	test_file /tmp/$NUM/studentouput /tmp/$NUM/sourceouput
 	
 else

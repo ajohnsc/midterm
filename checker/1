@@ -34,7 +34,7 @@ test_file(){
 if [ -f "$FILE" ]; then
 	mkdir -p /tmp/$NUM
 	cd /tmp/$NUM
-	bash $FILE
+	bash $FILE &>> /dev/null
 	if [ -d "/tmp/$NUM/folderbringer" ]; then
 		cd /tmp/$NUM/folderbringer
 		tree >> /tmp/$NUM/studentresult
