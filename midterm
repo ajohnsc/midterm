@@ -11,7 +11,7 @@ FAP=0
 
 # Help argument output
 help_workshop(){
-  printf "Usage: $0 [action]\nexample:\n\t$0 start\n\t$0 grade\n\n"
+  printf "Usage: $0 [action]\nexample:\n\t$0 instruction\n\t$0 check\n\t$0 submit\n\n"
 }
 
 # Checking viable first argument

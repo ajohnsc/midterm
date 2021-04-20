@@ -1,12 +1,9 @@
 #!/bin/bash
 
-
-
-
 echo "MIDTERM CHECK"
-for i in `ls /etc/checkerfoler`;
+for i in `ls /etc/instructions`;
 do
 	echo "--------------------------------------------------------------------------------------"
-	bash /etc/checkfolder/$i | sudo tee -a /etc/.midtermconfig
+	bash /etc/checker/$i
 	echo "--------------------------------------------------------------------------------------"
 done

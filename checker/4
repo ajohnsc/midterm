@@ -49,4 +49,5 @@ if [ -f "$FILE" ]; then
 		failed_output
 	fi		
 else
-	
+	failed_output
+fi
