@@ -1,0 +1,12 @@
+#!/bin/bash
+
+
+
+
+echo "MIDTERM CHECK"
+for i in `ls /etc/checkerfoler`;
+do
+	echo "--------------------------------------------------------------------------------------"
+	bash /etc/checkfolder/$i | sudo tee -a /etc/.midtermconfig
+	echo "--------------------------------------------------------------------------------------"
+done

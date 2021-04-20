@@ -3,4 +3,4 @@ Create a script named folderbringer.sh in the /home/student directory. the scrip
 1.) create a directory called folderbringer.
 2.) inside the folderbringer directory the script needs to create 100 directories named midterm1 to midterm100.
 3.) in each "midterm" directory it needs to have 100 directories named exam1 to exam100.
-4.) in each "exam" directory it needs to have 1000 files named sysad1 to sysad1000.
+4.) in each "exam" directory it needs to have a files named sysad.

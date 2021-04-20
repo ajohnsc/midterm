@@ -1,0 +1,52 @@
+echo -n "Checking folderbringer.sh:"
+
+FILE=/home/student/folderbringer.sh
+NUM=1
+
+# Print Pass
+pass_output(){
+	printf "\033[1;32mPass\033[0m\n"
+}
+
+# Print Failed
+failed_output(){
+  printf "\033[1;31mFailed\033[0m\n"
+}
+
+check_file(){
+	md5sum $1 | awk {'print $1'}
+}
+
+test_file(){
+	if [ -e $1 ]
+        then
+                if [ `check_file $1` = `check_file $2` ]
+                then
+                        pass_output
+                else
+                        failed_output
+                fi
+        else
+                failed_output
+        fi
+}
+
+if [ -f "$FILE" ]; then
+	mkdir -p /tmp/$NUM
+	cd /tmp/$NUM
+	bash $FILE
+	if [ -d "/tmp/$NUM/folderbringer" ]; then
+		cd /tmp/$NUM/folderbringer
+		tree >> /tmp/$NUM/studentresult
+		rm -rf /tmp/$NUM/folderbringer/*
+		cd /tmp/$NUM/folderbringer
+		mkdir -p midterm{1..100}/exam{1..100}
+		touch midterm{1..100}/exam{1..100}/sysad
+		tree >> /tmp/$NUM/sourceresult
+		test_file /tmp/$NUM/studentresult /tmp/$NUM/sourceresult
+	else
+		failed_output
+	fi		
+else
+	failed_output
+fi

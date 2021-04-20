@@ -1,0 +1,45 @@
+echo -n "Checking getutil.sh:"
+
+FILE=/home/student/getutil.sh
+NUM=2
+
+# Print Pass
+pass_output(){
+	printf "\033[1;32mPass\033[0m\n"
+}
+
+# Print Failed
+failed_output(){
+  printf "\033[1;31mFailed\033[0m\n"
+}
+
+check_file(){
+	md5sum $1 | awk {'print $1'}
+}
+
+test_file(){
+	if [ -e $1 ]
+        then
+                if [ `check_file $1` = `check_file $2` ]
+                then
+                        pass_output
+                else
+                        failed_output
+                fi
+        else
+                failed_output
+        fi
+}
+
+if [ -f "$FILE" ]; then
+	mkdir -p /tmp/$NUM
+	cd /tmp/$NUM
+	bash $FILE >> /tmp/$NUM/studentouput
+	free | grep Mem | awk '{ printf("RAM:%.0f%\n", $4/$2 * 100.0) }' >> /tmp/$NUM/sourceouput
+	echo "DISK:$(df --output=pcent / | tr -dc '0-9')%" >> /tmp/$NUM/sourceouput
+	test_file /tmp/$NUM/studentouput /tmp/$NUM/sourceouput
+	
+else
+	failed_output
+fi
+

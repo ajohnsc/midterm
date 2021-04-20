@@ -53,3 +53,5 @@ Is this information correct ? (y/n)"
 fi
 
 bash
+
+exit

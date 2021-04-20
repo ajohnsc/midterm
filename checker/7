@@ -1,0 +1,54 @@
+SCRIPT=argument.sh
+FILE=/home/student/$SCRIPT
+NUM=7
+FOLDER=argument
+echo -n "Checking $SCRIPT:"
+
+
+# Print Pass
+pass_output(){
+	printf "\033[1;32mPass\033[0m\n"
+}
+
+# Print Failed
+failed_output(){
+  printf "\033[1;31mFailed\033[0m\n"
+}
+
+check_file(){
+	md5sum $1 | awk {'print $1'}
+}
+
+test_file(){
+	if [ -e $1 ]
+        then
+                if [ `check_file $1` = `check_file $2` ]
+                then
+                        pass_output
+                else
+                        failed_output
+                fi
+        else
+                failed_output
+        fi
+}
+
+if [ -f "$FILE" ]; then
+	mkdir -p /tmp/$NUM
+	cd /tmp/$NUM
+	bash $FILE "Test" &>> studentoutput
+	bash $FILE "Test with Space" &>> studentoutput
+	bash $FILE 1 &>> studentoutput
+	bash $FILE 2 &>> studentoutput
+	bash $FILE 3 &>> studentoutput
+	echo "it is a string" &>> source
+	echo "it is a string" &>> source
+	echo "it is an odd number" &>> source
+	echo "it is an even number" &>> source
+	echo "it is an odd number" &>> source
+	test_file /tmp/$NUM/studentoutput /tmp/$NUM/source
+	
+else
+	failed_output
+fi
+

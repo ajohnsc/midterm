@@ -1,0 +1,58 @@
+SCRIPT=lucky.sh
+FILE=/home/student/$SCRIPT
+NUM=8
+FOLDER=lucky
+echo -n "Checking $SCRIPT:"
+
+
+# Print Pass
+pass_output(){
+	printf "\033[1;32mPass\033[0m\n"
+}
+
+# Print Failed
+failed_output(){
+  printf "\033[1;31mFailed\033[0m\n"
+}
+
+check_file(){
+	md5sum $1 | awk {'print $1'}
+}
+
+test_file(){
+	if [ -e $1 ]
+        then
+                if [ `check_file $1` = `check_file $2` ]
+                then
+                        pass_output
+                else
+                        failed_output
+                fi
+        else
+                failed_output
+        fi
+}
+
+if [ -f "$FILE" ]; then
+	mkdir -p /tmp/$NUM
+	cd /tmp/$NUM
+	bash $FILE
+	if [ -d "/tmp/$NUM/$FOLDER" ]; then
+		cd /tmp/$NUM/$FOLDER
+		if [ -f tenMB ];then
+			SIZE=`du -sh tenMB | awk {'print $1'}`
+			if [ "$SIZE" == "9.6M" ];then
+				test -f archive.zip && pass_output || failed_output
+			else
+				failed_output
+			fi
+		else
+			failed_output
+		fi
+	else
+		failed_output
+	fi		
+else
+	failed_output
+fi
+

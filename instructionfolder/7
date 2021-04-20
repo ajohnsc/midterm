@@ -5,3 +5,8 @@ Create a script named argument.sh in the /home/student directory. the script sho
 2.1.) if it is a number it should echo "it is a number".
 2.2.) if it is a string it should echo "it is a string".
 3.) and if it is a number it should identify if even or odd.
+
+Example:
+it is a string
+it is an odd number
+it is an even number

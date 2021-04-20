@@ -1,0 +1,52 @@
+SCRIPT=installhtop.sh
+FILE=/home/student/$SCRIPT
+NUM=5
+FOLDER=none
+echo -n "Checking $SCRIPT:"
+
+
+# Print Pass
+pass_output(){
+	printf "\033[1;32mPass\033[0m\n"
+}
+
+# Print Failed
+failed_output(){
+  printf "\033[1;31mFailed\033[0m\n"
+}
+
+check_file(){
+	md5sum $1 | awk {'print $1'}
+}
+
+test_file(){
+	if [ -e $1 ]
+        then
+                if [ `check_file $1` = `check_file $2` ]
+                then
+                        pass_output
+                else
+                        failed_output
+                fi
+        else
+                failed_output
+        fi
+}
+
+if [ -f "$FILE" ]; then
+	mkdir -p /tmp/$NUM
+	cd /tmp/$NUM
+	bash $FILE
+	if rpm -qa | grep htop  2>&1 > /dev/null;then
+	        if rpm -qa | grep epel-release 2>&1 > /dev/null;then
+			failed_output
+        	else
+                	pass_output
+        	fi
+	else
+		failed_output
+	fi	
+else
+	failed_output
+fi
+

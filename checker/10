@@ -1,0 +1,45 @@
+SCRIPT=groups.sh
+FILE=/home/student/$SCRIPT
+NUM=10
+FOLDER=none
+echo -n "Checking $SCRIPT:"
+
+
+# Print Pass
+pass_output(){
+	printf "\033[1;32mPass\033[0m\n"
+}
+
+# Print Failed
+failed_output(){
+  printf "\033[1;31mFailed\033[0m\n"
+}
+
+check_file(){
+	md5sum $1 | awk {'print $1'}
+}
+
+test_file(){
+	if [ -e $1 ]
+        then
+                if [ `check_file $1` = `check_file $2` ]
+                then
+                        pass_output
+                else
+                        failed_output
+                fi
+        else
+                failed_output
+        fi
+}
+
+if [ -f "$FILE" ]; then
+	mkdir -p /tmp/$NUM
+	cd /tmp/$NUM
+	bash $FILE &>> student
+	cat /etc/group | cut -d: -f1,3 | sed "s/:/ /g" | awk {'print $2 " " $1'} &>> source
+	test_file /tmp/$NUM/student /tmp/$NUM/source 
+else
+	failed_output
+fi
+
